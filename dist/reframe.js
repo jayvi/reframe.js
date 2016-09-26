@@ -19,7 +19,6 @@ function reframe(target, cName) {
     var width = frame.offsetWidth;
     var padding = height / width * 100;
     div.style.paddingTop = padding + '%';
-    frame.height = frame.width = '';
     div.className += classname;
     frame.parentNode.insertBefore(div, frame);
     frame.parentNode.removeChild(frame);

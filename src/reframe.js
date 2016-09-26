@@ -13,7 +13,6 @@ export default function reframe(target, cName) {
     const width = frame.offsetWidth;
     const padding = height / width * 100;
     div.style.paddingTop = `${padding}%`;
-    frame.height = frame.width = '';
     div.className += classname;
     frame.parentNode.insertBefore(div, frame);
     frame.parentNode.removeChild(frame);
@@ -21,9 +20,10 @@ export default function reframe(target, cName) {
   }
 }
 
-if (window.$) {
-  window.$.fn.extend({
-    reframe: function reframeFunc(cName) {
+const plugin = window.$ || window.jQuery || window.zepto;
+if (plugin) {
+  plugin.fn.extend({
+    reframe(cName) {
       return reframe(this, cName);
     },
   });

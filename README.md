@@ -18,9 +18,9 @@ bower i reframe.js --save-dev
 ```
 
 ### Setup
-1. Add `dist/reframe.js`.
-2. Add reframe `css/scss`  to your `css`.
-3. `reframe` the element you'd like to re-frame.
+1.  Add `dist/reframe.js`.
+2.  Add reframe `css/scss`  to your `css`.
+3.  `reframe` the element you'd like to re-frame.
 
 ### Examples
 
@@ -34,13 +34,13 @@ Elements that have been wrapped with reframe will not be wrapped twice.
 
 ### How?
 
-**Reframe.js** removes a specified element's `height & width attributes` & then wraps that element in `div` that is an [intrinsic ratio](http://alistapart.com/article/creating-intrinsic-ratios-for-video) of the original element. This plugin is great for **embedded content** like `iframes` or `videos`.
+**Reframe.js** removes a specified element's `height & width attributes` and then wraps that element in `div` that is an [intrinsic ratio](http://alistapart.com/article/creating-intrinsic-ratios-for-video) of the original element. This plugin is great for **embedded content** like `iframes` or `videos`.
 
 ### Why?
 
-**Reframe.js** is inspired by [FitVids](https://github.com/davatron5000/FitVids.js) & does what FitVids does but without the need for `jQuery`. This makes the plugin highly valuable when including it in a module that has to be very small & with minimal dependencies. Here's a basic [codepen example](http://codepen.io/yowainwright/pen/amzAEo).
+**Reframe.js** is inspired by [FitVids](https://github.com/davatron5000/FitVids.js) and does what FitVids does but without the need for `jQuery`. This makes the plugin highly valuable when including it in a module that has to be very small and with minimal dependencies. Here's a basic [codepen example](http://codepen.io/yowainwright/pen/amzAEo).
 
-This plugin is small - `~1.3kb` unminified & is meant to do 1 thing - _wrap elements that aren't responsive & make them responsive_. 💪
+This plugin is small - `~1.3kb` unminified and is meant to do 1 thing - _wrap elements that aren't responsive and make them responsive_. 💪
 
 ### Options
 
@@ -58,4 +58,29 @@ $('iframe').reframe();
 
 // While using a custom class name
 $('iframe').reframe('my-classname');
+```
+## _New:_ Noframe.js
+
+Noframe.js makes the same ratio as Reframe.js. Noframe.js's benefit is it doesn't wrap the element. This is best when concerned about not re-rendering an element. Reframe.js, instead, does a calculation **based on a parent element's** `max-width`.
+
+🔎 &nbsp;**Note** if:
+-   the `parent` does not have a max-width or
+-   the secound argument is set to `'false'`
+
+then the embed content's original width will be the max width and the video will only scale when the browser/viewport width is less than the max width. 👍
+
+```javascript
+noframe('iframe');
+noframe('iframe', 'parent');
+noframe('iframe', 'false'); // uses the original elements's width no matter what for the elements width ratio
+```
+
+### jQuery
+
+You can use **Noframe.js** with jQuery as well.
+
+```javascript
+$('iframe').noframe();
+$('iframe').noframe('parent');
+$('iframe').noframe('false'); // uses the original elements's width no matter what for the elements width ratio
 ```

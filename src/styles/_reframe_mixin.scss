@@ -1,5 +1,4 @@
-@mixin reframe($el: iframe, $paddingTop: 56.25%){
-  padding-top: $paddingTop;
+@mixin reframe($el: iframe){
   position: relative;
   width: 100%;
   #{$el} {
