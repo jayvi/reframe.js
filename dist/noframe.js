@@ -13,22 +13,22 @@ function _noframe(target, container) {
     var el = els[i];
     var height = el.offsetHeight;
     var width = el.offsetWidth;
-    var maxwidth = width + 'px';
     if (typeof container !== 'undefined' && container !== 'false') {
       var parent = document.querySelectorAll(container);
-      maxwidth = window.getComputedStyle(parent[0], null).getPropertyValue('max-width');
+      var maxwidth = window.getComputedStyle(parent[0], null).getPropertyValue('max-width');
       el.style.width = '100%';
       el.style.maxHeight = 'calc(' + maxwidth + ' * ' + height + '/' + width + ')';
     } else {
+      var _maxwidth = width + 'px';
       el.style.display = 'block';
       el.style.marginLeft = 'auto';
       el.style.marginRight = 'auto';
-      var fullwidth = maxwidth + 'px';
+      var fullwidth = _maxwidth + 'px';
       if (width > el.parentElement.offsetWidth) {
         fullwidth = el.parentElement.offsetWidth;
         el.style.maxHeight = 'calc(' + fullwidth + 'px * ' + height + '/' + width + ')';
       } else {
-        el.style.maxHeight = 'calc(' + maxwidth + ' * ' + height + '/' + width + ')';
+        el.style.maxHeight = 'calc(' + _maxwidth + ' * ' + height + '/' + width + ')';
       }
       el.style.width = fullwidth + 'px';
     }

@@ -7,13 +7,13 @@ export default function noframe(target, container) {
     const el = els[i];
     const height = el.offsetHeight;
     const width = el.offsetWidth;
-    let maxwidth = `${width}px`;
     if (typeof container !== 'undefined' && container !== 'false') {
       const parent = document.querySelectorAll(container);
-      maxwidth = window.getComputedStyle(parent[0], null).getPropertyValue('max-width');
+      const maxwidth = window.getComputedStyle(parent[0], null).getPropertyValue('max-width');
       el.style.width = '100%';
       el.style.maxHeight = `calc(${maxwidth} * ${height}/${width})`;
     } else {
+      const maxwidth = `${width}px`;
       el.style.display = 'block';
       el.style.marginLeft = 'auto';
       el.style.marginRight = 'auto';
